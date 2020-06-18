@@ -1,4 +1,0 @@
-模块api和模块provider都install到本地仓库提供两个jar
-
-服务提供者把Service接口写到api接口，对应的impl使用RpcReference即可发布服务
-服务使用者使用RpcService注入api中需要的服务即可使用
