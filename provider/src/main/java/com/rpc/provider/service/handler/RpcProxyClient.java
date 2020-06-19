@@ -9,6 +9,9 @@ import java.lang.reflect.Proxy;
  */
 public class RpcProxyClient {
 
+    /**
+     * 给接口创建代理类
+     */
     public static <T>T createProxy(Class<T> czz,String host,int port) {
         return (T)Proxy.newProxyInstance(czz.getClassLoader(),new Class<?>[]{czz},new RpcProxyHandler(host,port));
     }

@@ -1,7 +1,5 @@
 package com.rpc.api.param;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**
@@ -9,7 +7,7 @@ import java.io.Serializable;
  * @date 2020/6/18 11:54
  * @description
  */
-@Data
+
 public class RpcRequest implements Serializable {
 
     public static final long serialVersionUID = 1L;
@@ -34,4 +32,35 @@ public class RpcRequest implements Serializable {
      */
     private Class[] paramTypes;
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public Object[] getArgs() {
+        return args;
+    }
+
+    public void setArgs(Object[] args) {
+        this.args = args;
+    }
+
+    public Class[] getParamTypes() {
+        return paramTypes;
+    }
+
+    public void setParamTypes(Class[] paramTypes) {
+        this.paramTypes = paramTypes;
+    }
 }

@@ -29,6 +29,6 @@ public class RegisterRpcServiceConfig implements BeanPostProcessor {
             }
         }
 
-        return null;
+        return bean;
     }
 }

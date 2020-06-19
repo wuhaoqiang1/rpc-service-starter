@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * @Author: whq
  * @Date: 2020/06/18 23:03
- * @Description:
+ * @Description: starter≈‰÷√¿‡
  */
 @Configurable
 @EnableConfigurationProperties(RpcProperties.class)

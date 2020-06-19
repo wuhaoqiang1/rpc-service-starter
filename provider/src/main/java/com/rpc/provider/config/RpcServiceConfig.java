@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 /**
  * @author whq
  * @date 2020/6/18 17:41
- * @description
+ * @description 注入RpcService接口
  */
 public class RpcServiceConfig implements BeanPostProcessor {
 
@@ -40,6 +40,6 @@ public class RpcServiceConfig implements BeanPostProcessor {
                 }
             }
         }
-        return null;
+        return bean;
     }
 }

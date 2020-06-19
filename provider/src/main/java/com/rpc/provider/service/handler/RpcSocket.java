@@ -1,8 +1,6 @@
 package com.rpc.provider.service.handler;
 
 import com.rpc.api.param.RpcRequest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,14 +11,22 @@ import java.net.Socket;
  * @date 2020/6/18 14:43
  * @description
  */
-@Data
-@AllArgsConstructor
 public class RpcSocket {
 
     private String host;
 
     private int port;
 
+    public RpcSocket(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
+    /**
+     * 发起远程通信
+     * @param rpcRequest
+     * @return
+     */
     public Object send(RpcRequest rpcRequest) {
         ObjectOutputStream objectOutputStream = null;
         ObjectInputStream objectInputStream = null;
@@ -49,7 +55,22 @@ public class RpcSocket {
                 }
             }
         }
-        return "error";
+        return null;
     }
 
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
 }

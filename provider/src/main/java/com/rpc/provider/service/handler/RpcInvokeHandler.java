@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author whq
  * @date 2020/6/18 16:09
- * @description
+ * @description rpc远程通信处理
  */
 public class RpcInvokeHandler implements Runnable{
 
@@ -30,7 +30,7 @@ public class RpcInvokeHandler implements Runnable{
      */
     public static Map<String,Object> allService = new ConcurrentHashMap<>();
 
-    public static Object invoke(RpcRequest rpcRequest) {
+    private static Object invoke(RpcRequest rpcRequest) {
         try {
             Class czz = Class.forName(rpcRequest.getClassName());
             Method method = czz.getMethod(rpcRequest.getMethodName(),rpcRequest.getParamTypes());

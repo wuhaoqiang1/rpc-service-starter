@@ -1,6 +1,5 @@
 package com.rpc.provider.config;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -8,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Date: 2020/06/18 23:04
  * @Description:
  */
-@Data
 @ConfigurationProperties(prefix = "rpc.service")
 public class RpcProperties {
 
@@ -28,4 +26,27 @@ public class RpcProperties {
      */
     private int registerPort;
 
+    public String getInvokeHost() {
+        return invokeHost;
+    }
+
+    public void setInvokeHost(String invokeHost) {
+        this.invokeHost = invokeHost;
+    }
+
+    public int getInvokePort() {
+        return invokePort;
+    }
+
+    public void setInvokePort(int invokePort) {
+        this.invokePort = invokePort;
+    }
+
+    public int getRegisterPort() {
+        return registerPort;
+    }
+
+    public void setRegisterPort(int registerPort) {
+        this.registerPort = registerPort;
+    }
 }

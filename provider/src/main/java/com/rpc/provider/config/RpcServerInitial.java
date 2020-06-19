@@ -1,8 +1,7 @@
 package com.rpc.provider.config;
 
 import com.rpc.provider.service.handler.RpcInvokeHandler;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -14,7 +13,7 @@ import java.util.concurrent.Executors;
  * @date 2020/6/18 17:17
  * @description 启动rpc服务
  */
-public class RpcServerInitial implements ApplicationListener<ContextRefreshedEvent> {
+public class RpcServerInitial {
 
     private int port;
 
@@ -24,19 +23,24 @@ public class RpcServerInitial implements ApplicationListener<ContextRefreshedEve
         this.port = rpcProperties.getRegisterPort();
     }
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+    /**
+     * 初始化ServiceSocket
+     */
+    @PostConstruct
+    public void initServiceSocket() {
         //启动服务
-        try(ServerSocket serverSocket = new ServerSocket(port)) {
-            while(true) {
-                // 阻塞连接
-                Socket socket = serverSocket.accept();
-                // 请求全部给线程池处理
-                executorService.submit(new RpcInvokeHandler(socket));
+        executorService.execute(()->{
+            try(ServerSocket serverSocket = new ServerSocket(port)) {
+                while(true) {
+                    // 阻塞连接
+                    Socket socket = serverSocket.accept();
+                    // 请求全部给线程池处理
+                    executorService.submit(new RpcInvokeHandler(socket));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
 }
